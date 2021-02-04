@@ -1,0 +1,19 @@
+div#containers {
+    display: flex;
+      flex-flow: column nowrap;
+}
+
+div.container {
+    display: flex;
+}
+
+div.container > p.name {
+    flex: 1 1 30%;
+}
+div.container > p.state {
+    flex: 1 1 30%;
+}
+div.container > p.status {
+    flex: 1 1 30%;
+}
+
