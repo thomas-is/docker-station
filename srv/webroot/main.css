@@ -1,19 +1,15 @@
 div#containers {
-    display: flex;
-      flex-flow: column nowrap;
+  display: table;
+  font-family: monospace;
 }
-
 div.container {
-    display: flex;
+  display: table-row-group;
 }
-
-div.container > p.name {
-    flex: 1 1 30%;
+div.labels {
+  display: table-header-group;
+  font-weight: bold;
 }
-div.container > p.state {
-    flex: 1 1 30%;
+div.container > *, div.labels > * {
+  display: table-cell;
+  padding: 4px 8px;
 }
-div.container > p.status {
-    flex: 1 1 30%;
-}
-

@@ -19,7 +19,13 @@
 
 <main>
 
-<div id="containers"></div>
+<div id="containers">
+  <div class="labels">
+    <p class="name">name</p>
+    <p class="state">state</p>
+    <p class="status">status</p>
+  </div>
+</div>
 
 </main>
 

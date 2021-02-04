@@ -9,6 +9,9 @@ function boot() {
 function onGetContainers() {
   const containers = JSON.parse(this.responseText);
   const contextNode = document.querySelector("div#containers");
+
+  containers.sort((a, b) => (a.Names[0] > b.Names[0]) ? 1 : -1);
+
   for( let index in containers ) {
     new containerNode( contextNode, containers[index] ) ;
   }
