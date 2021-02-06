@@ -15,7 +15,9 @@
 
 <body onload="boot()">
 
-<header></header>
+<header>
+<img src="pics/docker.png">
+</header>
 
 <main>
 

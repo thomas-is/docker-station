@@ -7,31 +7,50 @@ function boot() {
 }
 
 function onGetContainers() {
-  const containers = JSON.parse(this.responseText);
-  const contextNode = document.querySelector("div#containers");
+  const data = JSON.parse(this.responseText);
+  new containersList(data);
+}
 
-  containers.sort((a, b) => (a.Names[0] > b.Names[0]) ? 1 : -1);
+class containersList {
 
-  for( let index in containers ) {
-    new containerNode( contextNode, containers[index] ) ;
+  constructor( data ) {
+    this.node = document.querySelector("div#containers");
+    this.initialHTML = this.node.innerHTML;
+    this.data = data;
+    this.render();
   }
+
+  render( sortBy = "name" ) {
+    this.node.innerHTML = this.initialHTML;
+    switch(sortBy) {
+      case "name":
+      default:
+        this.data.sort((a, b) => (a.Names[0] > b.Names[0]) ? 1 : -1);
+    }
+    for( let index in this.data ) {
+      new container( this.node, this.data[index] ) ;
+    }
+  }
+
 }
 
 
-class containerNode {
-  constructor( contextNode,  props ) {
-    this.contextNode = contextNode;
-    this.props       = props;
-    this.node        = document.createElement("div");
+class container {
 
-    this.contextNode.appendChild(this.node);
+  constructor( parentNode, data ) {
+    this.parentNode = parentNode;
+    this.data       = data;
+    this.node       = document.createElement("div");
+
+    this.parentNode.appendChild(this.node);
 
     this.node.classList.add("container");
     this.node.innerHTML = document.querySelector("template#container").innerHTML;
 
-    this.node.querySelector("p.name").innerText = this.props.Names[0];
-    this.node.querySelector("p.state").innerText = this.props.State;
-    this.node.querySelector("p.status").innerText = this.props.Status;
+    this.node.querySelector("p.name"  ).innerText = this.data.Names[0];
+    this.node.querySelector("p.state" ).innerText = this.data.State;
+    this.node.querySelector("p.status").innerText = this.data.Status;
 
   }
+
 }

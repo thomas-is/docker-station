@@ -1,3 +1,6 @@
+header > img {
+  max-width: 100px;
+}
 div#containers {
   display: table;
   font-family: monospace;
