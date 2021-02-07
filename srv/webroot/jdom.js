@@ -1,6 +1,6 @@
 
 function boot() {
-  setInterval(queryContainers, 1000);
+//  setInterval(queryContainers, 1000);
   queryContainers();
 }
 
