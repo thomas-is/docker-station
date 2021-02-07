@@ -10,7 +10,6 @@
 </head>
 
 
-<script src="containers.js"></script>
 
 
 <body onload="boot()">
@@ -22,22 +21,13 @@
 <main>
 
 <div id="containers">
-  <div class="labels">
-    <p class="name">name</p>
-    <p class="state">state</p>
-    <p class="status">status</p>
-  </div>
 </div>
 
 </main>
 
 <footer></footer>
 
-<template id="container">
-  <p class="name"></p>
-  <p class="state"></p>
-  <p class="status"></p>
-</template>
+<script src="jdom.js"></script>
 
 </body>
 </html>

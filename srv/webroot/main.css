@@ -1,18 +1,62 @@
+html, body {}
+
+body {
+  max-width: 800px;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  margin: 8px auto;
+}
+
+header > img {
+}
+
 header > img {
   max-width: 100px;
 }
-div#containers {
-  display: table;
+
+.containers {
   font-family: monospace;
+  margin: 0;
+  padding: 0;
 }
-div.container {
-  display: table-row-group;
+.containers > span {
+  display: block;
+  border: 1px solid #3c4f6a;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 4px;
+  box-shadow: 0px 0px 12px #3c4f6a inset;
 }
-div.labels {
-  display: table-header-group;
+
+.containers > span > * {
+  display: block;
+  padding: 2px 12px;
+}
+
+.containers .Names {
   font-weight: bold;
 }
-div.container > *, div.labels > * {
-  display: table-cell;
-  padding: 4px 8px;
+
+.containers .Ports > span > span {
+  display: inline;
+  margin: 0px 8px 0px 0px;
 }
+
+.containers .Id,
+.containers .ImageID,
+.containers .Created,
+.containers .Labels,
+.containers .HostConfig,
+.containers .NetworkSettings,
+.containers .Mounts
+{
+  display: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
