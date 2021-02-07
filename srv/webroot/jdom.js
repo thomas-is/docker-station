@@ -9,7 +9,7 @@ function query( endpoint ) {
 function render(className, json) {
   const data = JSON.parse(json);
   clearNodeId("output");
-  new jDOM( document.querySelector("#output"), data, className );
+  jDOM(data, className, document.querySelector("#output"));
 }
 
 function clearNodeId( id ) {
@@ -21,33 +21,33 @@ function clearNodeId( id ) {
 }
 
 
-class jDOM {
+function jDOM( data, key = "jdom", parentNode = null ) {
 
-  constructor( parentNode, data, key = "jdom" ) {
+  let span = document.createElement("span");
 
-    this.parentNode = parentNode;
-    this.key        = key;
-    this.data       = data;
-    this.node       = document.createElement("span");
-
-    if( ! this.parentNode.classList.contains("array") ) {
-      this.node.classList.add(this.key);
+  if( parentNode ) {
+    if( ! parentNode.classList.contains("array") ) {
+      span.classList.add(key);
     }
-    if( Array.isArray(data) ) {
-      this.node.classList.add("array");
-    }
-
-    if( typeof(data) == "object" ) {
-      for( let key in data ) {
-        new jDOM( this.node, data[key], key) 
-      }
-    } else {
-      this.node.innerText = data;
-    }
-
-    this.parentNode.appendChild(this.node);
-
   }
 
+  if( Array.isArray(data) ) {
+    span.classList.add("array");
+  }
+
+  if( typeof(data) == "object" ) {
+    for( let key in data ) {
+      jDOM( data[key], key, span)
+    }
+  } else {
+    span.innerText = data;
+  }
+
+  if( parentNode ) {
+    parentNode.appendChild(span);
+    return;
+  }
+
+  return span;
 
 }
