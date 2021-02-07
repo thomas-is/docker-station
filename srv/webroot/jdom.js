@@ -1,7 +1,7 @@
 
 function boot() {
 //  setInterval(queryContainers, 1000);
-  queryContainers();
+//  queryContainers();
 }
 
 
@@ -12,15 +12,39 @@ function queryContainers() {
   oReq.send();
 }
 
+
+function queryVolumes() {
+  let oReq = new XMLHttpRequest();
+  oReq.addEventListener("load", onGetVolumes);
+  oReq.open("GET", "/volumes.php");
+  oReq.send();
+}
+
 function onGetContainers() {
   const data = JSON.parse(this.responseText);
   const parentNode = document.querySelector("#containers");
-  while( parentNode.firstChild ) {
-    parentNode.removeChild(parentNode.firstChild);
-  }
+  clearOutputNodes();
   new jDOM( parentNode , data, "containers" );
 }
+function onGetVolumes() {
+  const data = JSON.parse(this.responseText);
+  const parentNode = document.querySelector("#volumes");
+  clearOutputNodes();
+  new jDOM( parentNode , data, "volumes" );
+}
 
+function clearOutputNodes() {
+  clearNodeId("containers");
+  clearNodeId("volumes");
+}
+
+function clearNodeId( id ) {
+  const node = document.querySelector("#"+id);
+  if( ! node ) { return; }
+  while( node.firstChild ) {
+    node.removeChild(node.firstChild);
+  }
+}
 
 
 class jDOM {

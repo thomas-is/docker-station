@@ -18,21 +18,40 @@ header > img {
   max-width: 100px;
 }
 
-.containers {
+nav {
+  display: flex;
+}
+
+nav > span {
+  flex: 1 1 48px;
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 12px;
+  border-radius: 12px;
+  margin-right: 4px;
+}
+
+main {
+  margin: 8px auto;
+}
+
+.containers, .volumes {
   font-family: monospace;
   margin: 0;
   padding: 0;
 }
-.containers > span {
+.containers > span,
+.volumes > .Volumes > span {
   display: block;
-  border: 1px solid #3c4f6a;
-  border-radius: 8px;
   padding: 8px;
   margin-bottom: 4px;
-  box-shadow: 0px 0px 12px #3c4f6a inset;
+  background-color: #9bb;
+  border: 1px solid #466;
+  border-radius: 8px;
 }
 
-.containers > span > * {
+.containers > span > *,
+.volumes > .Volumes > span > * {
   display: block;
   padding: 2px 12px;
 }
@@ -41,7 +60,7 @@ header > img {
   font-weight: bold;
 }
 
-.containers .Ports > span > span {
+.containers .State, .containers .Status {
   display: inline;
   margin: 0px 8px 0px 0px;
 }
@@ -51,6 +70,7 @@ header > img {
 .containers .Created,
 .containers .Labels,
 .containers .HostConfig,
+.containers .Ports,
 .containers .NetworkSettings,
 .containers .Mounts
 {
@@ -60,3 +80,21 @@ header > img {
   box-sizing: border-box;
 }
 
+
+.containers > span {
+  display: block;
+  padding: 8px;
+  margin-bottom: 4px;
+  background-color: #9bb;
+  border: 1px solid #466;
+  border-radius: 8px;
+}
+
+
+.message {
+  display: block;
+  background-color: #aaa;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid black;
+}
