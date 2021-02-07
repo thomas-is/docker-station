@@ -15,4 +15,4 @@ docker run --rm -it \
   -e PHP_UID=$DOCKER \
   -e PHP_GID=$DOCKER \
   -p 8080:80 \
-  0lfi/ng-php7:arm32v7
+  0lfi/ng-php7
