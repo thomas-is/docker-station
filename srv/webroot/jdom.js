@@ -1,41 +1,15 @@
 
-function boot() {
-//  setInterval(queryContainers, 1000);
-//  queryContainers();
-}
-
-
-function queryContainers() {
+function query( endpoint ) {
   let oReq = new XMLHttpRequest();
-  oReq.addEventListener("load", onGetContainers);
-  oReq.open("GET", "/containers.php");
+  oReq.addEventListener("load", () => render( endpoint, oReq.response) );
+  oReq.open("GET", "/"+endpoint+".php");
   oReq.send();
 }
 
-
-function queryVolumes() {
-  let oReq = new XMLHttpRequest();
-  oReq.addEventListener("load", onGetVolumes);
-  oReq.open("GET", "/volumes.php");
-  oReq.send();
-}
-
-function onGetContainers() {
-  const data = JSON.parse(this.responseText);
-  const parentNode = document.querySelector("#containers");
-  clearOutputNodes();
-  new jDOM( parentNode , data, "containers" );
-}
-function onGetVolumes() {
-  const data = JSON.parse(this.responseText);
-  const parentNode = document.querySelector("#volumes");
-  clearOutputNodes();
-  new jDOM( parentNode , data, "volumes" );
-}
-
-function clearOutputNodes() {
-  clearNodeId("containers");
-  clearNodeId("volumes");
+function render(className, json) {
+  const data = JSON.parse(json);
+  clearNodeId("output");
+  new jDOM( document.querySelector("#output"), data, className );
 }
 
 function clearNodeId( id ) {

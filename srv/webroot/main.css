@@ -31,17 +31,19 @@ nav > span {
   margin-right: 4px;
 }
 
-main {
+
+#output {
+  font-family: monospace;
   margin: 8px auto;
 }
 
-.containers, .volumes {
-  font-family: monospace;
-  margin: 0;
-  padding: 0;
+span {
+  display: inherit;
 }
+
 .containers > span,
-.volumes > .Volumes > span {
+.volumes > .Volumes > span,
+.services > span {
   display: block;
   padding: 8px;
   margin-bottom: 4px;
@@ -51,8 +53,8 @@ main {
 }
 
 .containers > span > *,
-.volumes > .Volumes > span > * {
-  display: block;
+.volumes > .Volumes > span > *,
+.services > span > * {
   padding: 2px 12px;
 }
 
@@ -65,22 +67,6 @@ main {
   margin: 0px 8px 0px 0px;
 }
 
-.containers .Id,
-.containers .ImageID,
-.containers .Created,
-.containers .Labels,
-.containers .HostConfig,
-.containers .Ports,
-.containers .NetworkSettings,
-.containers .Mounts
-{
-  display: none;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
 .containers > span {
   display: block;
   padding: 8px;
@@ -90,6 +76,21 @@ main {
   border-radius: 8px;
 }
 
+.containers .Id,
+.containers .ImageID,
+.containers .Created,
+.containers .Labels,
+.containers .HostConfig,
+.containers .Ports,
+.containers .NetworkSettings,
+.containers .Mounts,
+.services .Endpoint,
+.volumes .CreatedAt {
+  display: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .message {
   display: block;

@@ -12,21 +12,19 @@
 
 
 
-<body onload="boot()">
+<body>
 
 <header>
 <img src="pics/docker.png">
 </header>
 
 <nav>
-  <span onclick="queryContainers()">Containers</span>
-  <span onclick="queryVolumes()">Volumes</span>
+  <span onclick="query('containers')">Containers</span>
+  <span onclick="query('volumes')">Volumes</span>
+  <span onclick="query('services')">Services</span>
 </nav>
 
-<main>
-
-<div id="containers"></div>
-<div id="volumes"></div>
+<main id="output">
 
 </main>
 
