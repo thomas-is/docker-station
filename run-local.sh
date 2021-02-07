@@ -12,7 +12,6 @@ docker run --rm -it \
   -v $(pwd)/ng.conf:/etc/nginx/conf.d/default.conf \
   -v $(pwd)/srv:/srv \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -e PHP_UID=$DOCKER \
-  -e PHP_GID=$DOCKER \
+  -e PHP_USER=$DOCKER \
   -p 8080:80 \
   0lfi/ng-php7
