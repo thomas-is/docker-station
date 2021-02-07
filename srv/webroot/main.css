@@ -85,11 +85,25 @@ span {
 .containers .NetworkSettings,
 .containers .Mounts,
 .services .Endpoint,
-.volumes .CreatedAt {
+.services .ID,
+.services .Version,
+.services .PreviousSpec,
+.services .Labels,
+.services .TaskTemplate,
+.services .EndpointSpec,
+.services .UpdateStatus .StartedAt,
+.services .UpdateStatus .CompletedAt,
+.services .UpdateStatus .State,
+.volumes .CreatedAt,
+.volumes .Labels {
   display: none;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.services .Replicas::before {
+  content: "Replicas: ";
 }
 
 .message {
