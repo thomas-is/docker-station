@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html, body {}
 
 body {
@@ -31,20 +35,12 @@ nav > span {
   margin-right: 4px;
 }
 
-
-#output {
-  font-family: monospace;
-  margin: 8px auto;
+nav > span:last-child {
+  margin-right: 0;
 }
 
-span {
-  display: inherit;
-}
-
-.containers > span,
-.volumes > .Volumes > span,
-.services > span {
-  display: block;
+span.containers {
+  display: table;
   padding: 8px;
   margin-bottom: 4px;
   background-color: #9bb;
@@ -52,58 +48,35 @@ span {
   border-radius: 8px;
 }
 
-.containers > span > *,
-.volumes > .Volumes > span > *,
-.services > span > * {
+span.containers > span {
+  display: table-row;
+}
+
+span.containers > span > span {
+  display: table-cell;
   padding: 2px 12px;
 }
 
-.containers .Names {
-  font-weight: bold;
-}
-
-.containers .State, .containers .Status {
-  display: inline;
-  margin: 0px 8px 0px 0px;
-}
-
-.containers > span {
-  display: block;
+.array > span {
   padding: 8px;
   margin-bottom: 4px;
   background-color: #9bb;
   border: 1px solid #466;
   border-radius: 8px;
-}
-
-.containers .Id,
-.containers .ImageID,
-.containers .Created,
-.containers .Labels,
-.containers .HostConfig,
-.containers .Ports,
-.containers .NetworkSettings,
-.containers .Mounts,
-.services .Endpoint,
-.services .ID,
-.services .Version,
-.services .PreviousSpec,
-.services .Labels,
-.services .TaskTemplate,
-.services .EndpointSpec,
-.services .UpdateStatus .StartedAt,
-.services .UpdateStatus .CompletedAt,
-.services .UpdateStatus .State,
-.volumes .CreatedAt,
-.volumes .Labels {
-  display: none;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 .services .Replicas::before {
   content: "Replicas: ";
+}
+
+span.volumes {
+  display: block;
+}
+span.volumes > span {
+  display: block;
+}
+span.volumes > span > span{
+  display: block;
 }
 
 .message {
@@ -113,3 +86,17 @@ span {
   border-radius: 12px;
   border: 1px solid black;
 }
+#output {
+  display: block;
+  font-family: monospace;
+  margin: 8px auto;
+}
+
+#output > span {
+  width: 100%;
+}
+
+#output.syncing {
+  display: none;
+}
+
