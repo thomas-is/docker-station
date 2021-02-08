@@ -21,6 +21,7 @@ function clearNodeId( id ) {
   node.classList.add("syncing");
 }
 
+
 function filterResponse( json, endpoint ) {
   const source = JSON.parse(json);
   switch(endpoint) {
@@ -102,6 +103,7 @@ function jdom( data, key = "jdom", parentNode = null ) {
     }
   } else {
     span.innerText = data;
+    span.setAttribute("data-content",data);
   }
 
   if( parentNode ) {

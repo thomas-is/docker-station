@@ -39,45 +39,26 @@ nav > span:last-child {
   margin-right: 0;
 }
 
-span.containers {
-  display: table;
+span.array {
+  display: block;
+  padding: 8px;
+  margin-bottom: 4px;
+}
+
+span.array > span {
+  display: block;
+  border: 1px solid #466;
+  border-radius: 8px;
   padding: 8px;
   margin-bottom: 4px;
   background-color: #9bb;
-  border: 1px solid #466;
-  border-radius: 8px;
 }
 
-span.containers > span {
-  display: table-row;
-}
-
-span.containers > span > span {
-  display: table-cell;
+span.array > span > span {
+  display: block;
   padding: 2px 12px;
 }
 
-.array > span {
-  padding: 8px;
-  margin-bottom: 4px;
-  background-color: #9bb;
-  border: 1px solid #466;
-  border-radius: 8px;
-}
-
-.services .Replicas::before {
-  content: "Replicas: ";
-}
-
-span.volumes {
-  display: block;
-}
-span.volumes > span {
-  display: block;
-}
-span.volumes > span > span{
-  display: block;
-}
 
 .message {
   display: block;
@@ -100,3 +81,6 @@ span.volumes > span > span{
   display: none;
 }
 
+.containers .State[data-content="running"] {
+  color: green;
+}
