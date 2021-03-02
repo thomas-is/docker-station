@@ -7,6 +7,7 @@ html, body {}
 body {
   max-width: 800px;
   margin: auto;
+  font-family: monospace;
 }
 
 header {
@@ -24,15 +25,22 @@ header > img {
 
 nav {
   display: flex;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select:none;
+  user-select:none;
+  -o-user-select:none;
 }
 
 nav > span {
   flex: 1 1 48px;
   cursor: pointer;
-  border: 1px solid black;
   padding: 12px;
   border-radius: 12px;
   margin-right: 4px;
+  border: 1px solid #bbb;
+  background-color: #eee;
+  box-shadow: 0px 0px 8px #eee;
 }
 
 nav > span:last-child {
@@ -41,23 +49,24 @@ nav > span:last-child {
 
 span.array {
   display: block;
-  padding: 8px;
   margin-bottom: 4px;
 }
 
 span.array > span {
   display: block;
-  border: 1px solid #466;
-  border-radius: 8px;
+  border: 1px solid #c2c9d7;
+  border-radius: 12px;
   padding: 8px;
-  margin-bottom: 4px;
-  background-color: #9bb;
+  margin-top: 8px;
+  background-color: #e2e9f7;
+  box-shadow: 0px 0px 8px #e2e9f7;
 }
 
 span.array > span > span {
   display: block;
   padding: 2px 12px;
 }
+
 
 
 .message {
@@ -77,10 +86,44 @@ span.array > span > span {
   width: 100%;
 }
 
-#output.syncing {
-  display: none;
-}
-
-.containers .State[data-content="running"] {
+.containers .State[data-value="running"] {
   color: green;
 }
+
+.com\.docker\.stack\.image {
+  display: block;
+}
+.com\.docker\.stack\.namespace {
+  display: block;
+}
+
+/* jdom */
+[data-value]::before {  content: attr(data-value); }
+
+/* adapted CSS from https://loading.io/css/ */
+.syncing {
+  display: block;
+  width: 80px;
+  height: 80px;
+}
+.syncing:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #444;
+  border-color: #444 transparent #444 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+

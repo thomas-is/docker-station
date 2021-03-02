@@ -50,15 +50,12 @@ function mapContainers( source ) {
       }
     );
   }
-
   data.sort( (a, b) => { return a.Name < b.Name ? -1 : 1 });
-
   return data;
 }
 
 function mapVolumes( source ) {
   let data = [];
-  console.log(source);
   for( let index in source.Volumes ) {
     data.push(
       {
@@ -68,15 +65,24 @@ function mapVolumes( source ) {
       }
     );
   }
-
   data.sort( (a, b) => { return a.Name < b.Name ? -1 : 1 });
-
   return data;
 }
 
 function mapServices( source ) {
-  let data = {};
+  let data = [];
   console.log(source);
+  for( let index in source ) {
+    data.push(
+      {
+        "Name":   source[index].Spec.Name,
+        "Labels":  source[index].Spec.Labels,
+      }
+    );
+  }
+  console.log(data);
+  data.sort( (a, b) => { return a.Name < b.Name ? -1 : 1 });
+  return data;
 }
 
 
@@ -87,23 +93,26 @@ function jdom( data, key = "jdom", parentNode = null ) {
 
   let span = document.createElement("span");
 
-  if( parentNode ) {
-    if( ! parentNode.classList.contains("array") ) {
-      span.classList.add(key);
-    }
-  }
+  if( parentNode.classList.contains("array") ) {
+    span.setAttribute("data-index", key);
 
-  if( Array.isArray(data) ) {
-    span.classList.add("array");
+  } else {
+    span.classList.add(key);
   }
 
   if( typeof(data) == "object" ) {
+
+
+    if( Array.isArray(data) ) {
+      span.classList.add("array");
+    }
+
     for( let key in data ) {
       jdom( data[key], key, span)
     }
+
   } else {
-    span.innerText = data;
-    span.setAttribute("data-content",data);
+    span.setAttribute("data-value",data);
   }
 
   if( parentNode ) {
